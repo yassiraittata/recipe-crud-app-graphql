@@ -1,11 +1,7 @@
 exports.Query = {
-  recipes: () => {
-    return [
-      {
-        id: 1,
-        name: "String",
-        description: "String",
-      },
-    ];
+  recipes: async (parent, args, { Recipe }) => {
+    return await Recipe.find();
   },
+
+  recipe: async (id) => {},
 };

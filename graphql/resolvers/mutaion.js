@@ -1,5 +1,14 @@
+const Recipe = require("../../models/recipe");
+
 exports.Mutation = {
-  addRecipe(parent, { input }, context) {
-    return [];
+  addRecipe: async (parent, { input }) => {
+    const recipe = new Recipe({
+      name: input.name,
+      description: input.description,
+    });
+
+    await recipe.save();
+
+    return recipe;
   },
 };

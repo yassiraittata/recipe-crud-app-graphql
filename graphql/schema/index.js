@@ -8,16 +8,19 @@ const schema = gql`
   }
 
   input recipeInput {
-    name: String!
+    name: String
     description: String
   }
 
   type Query {
+    recipe(id: ID!): Recipe!
     recipes: [Recipe!]!
   }
 
   type Mutation {
-    addRecipe(input: recipeInput): [Recipe!]!
+    addRecipe(input: recipeInput): Recipe!
+    deleteRecipe(id: ID!): Boolean!
+    updateRecipe(id: ID, input: recipeInput): Recipe!
   }
 `;
 
