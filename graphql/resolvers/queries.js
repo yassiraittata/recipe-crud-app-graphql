@@ -6,7 +6,7 @@ exports.Query = {
     return recipes;
   },
 
-  recipe: async (parent, { id }) => {
+  recipe: async (parent, { id }, context) => {
     const recipe = await Recipe.findById(id);
     console.log(recipe);
     return recipe;
