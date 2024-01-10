@@ -13,7 +13,7 @@ const schema = gql`
   }
 
   type Query {
-    recipe(id: ID!): Recipe!
+    recipe(id: ID!): Recipe
     recipes: [Recipe!]!
   }
 
