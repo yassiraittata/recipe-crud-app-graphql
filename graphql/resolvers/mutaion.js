@@ -17,4 +17,16 @@ exports.Mutation = {
 
     return true;
   },
+
+  updateRecipe: async (parent, { id, input }) => {
+    const recipe = await Recipe.findById(id);
+
+    if (!recipe) throw new Error("No recipe was found!");
+
+    Object.assign(recipe, input);
+
+    await recipe.save()
+
+    return recipe;
+  },
 };
