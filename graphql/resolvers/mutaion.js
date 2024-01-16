@@ -12,5 +12,9 @@ exports.Mutation = {
     return recipe;
   },
 
-  
+  deleteRecipe: async (parent, { id }) => {
+    await Recipe.findByIdAndDelete(id);
+
+    return true;
+  },
 };
