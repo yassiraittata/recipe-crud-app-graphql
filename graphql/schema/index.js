@@ -13,6 +13,11 @@ const schema = gql`
     password: String
   }
 
+  type Auth {
+    token: String
+    user: User!
+  }
+
   input recipeInput {
     name: String
     description: String
