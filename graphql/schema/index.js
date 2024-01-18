@@ -7,6 +7,12 @@ const schema = gql`
     description: String
   }
 
+  type User {
+    id: ID!
+    name: String!
+    password: String
+  }
+
   input recipeInput {
     name: String
     description: String
