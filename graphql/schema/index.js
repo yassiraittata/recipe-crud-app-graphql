@@ -9,7 +9,7 @@ const schema = gql`
 
   type User {
     id: ID!
-    name: String!
+    username: String!
     password: String
   }
 
@@ -32,6 +32,8 @@ const schema = gql`
     addRecipe(input: recipeInput): Recipe!
     deleteRecipe(id: ID!): Boolean!
     updateRecipe(id: ID, input: recipeInput): Recipe!
+    signup(username: String, password: String): Auth!
+    signin(username: String, password: String): Auth!
   }
 `;
 
