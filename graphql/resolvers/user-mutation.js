@@ -32,8 +32,10 @@ const mutation = {
   },
 
   async signin(parent, { username, password }, context) {
-    const userExist = await User.find({ username });
+    const userExist = await User.findOne({ username });
     if (!userExist) throw new Error("No user found!");
+
+    const isPwMacth = bcrypt.compare(password, userExist.password);
   },
 };
 
