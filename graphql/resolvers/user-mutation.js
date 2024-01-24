@@ -5,7 +5,7 @@ const User = require("../../models/user");
 
 const mutation = {
   async signup(parent, { username, password }, context) {
-    const userExist = await User.find({ username });
+    const userExist = await User.findOne({ username });
     if (userExist) throw new Error("User already exists");
 
     const hash = await bcrypt.hash(password, 12);
@@ -37,10 +37,10 @@ const mutation = {
   },
 
   async signin(parent, { username, password }, context) {
-    const userExist = await User.findOne({ username });
-    if (!userExist) throw new Error("No user found!");
+    const user = await User.findOne({ username });
+    if (!user) throw new Error("No user found!");
 
-    const isPwMacth = bcrypt.compare(password, userExist.password);
+    const isPwMacth = bcrypt.compare(password, user.password);
 
     if (isPwMacth) throw new Error("Incorrect password!");
 

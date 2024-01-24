@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const connect = require("./config/db");
 dotenv.config();
 
+const auth = require("./middlewares/auth");
+
 const typeDefs = require("./graphql/schema/index");
 const resolvers = require("./graphql/resolvers/index");
 
