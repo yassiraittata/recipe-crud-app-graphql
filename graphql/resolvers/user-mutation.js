@@ -36,6 +36,21 @@ const mutation = {
     if (!userExist) throw new Error("No user found!");
 
     const isPwMacth = bcrypt.compare(password, userExist.password);
+
+    if (isPwMacth) throw new Error("Incorrect password!");
+
+    const token = jwt.sign(
+      { username, userId: createdUser.id },
+      process.env.SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    return {
+      token,
+      user,
+    };
   },
 };
 
