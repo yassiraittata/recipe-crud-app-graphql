@@ -9,6 +9,13 @@ const resolvers = require("./graphql/resolvers/index");
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => {
+    const token = req?.headers.authorization
+      ? auth(req?.headers?.authorization)
+      : null;
+
+    return { userId: token?.userId };
+  },
 });
 
 server

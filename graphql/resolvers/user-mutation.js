@@ -25,6 +25,11 @@ const mutation = {
       }
     );
 
+    console.log({
+      token,
+      user,
+    });
+
     return {
       token,
       user,

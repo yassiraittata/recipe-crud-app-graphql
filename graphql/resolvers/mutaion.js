@@ -1,7 +1,8 @@
 const Recipe = require("../../models/recipe");
 
 exports.Mutation = {
-  addRecipe: async (parent, { input }) => {
+  addRecipe: async (parent, { input }, { userId }) => {
+    console.log({ userId });
     const recipe = new Recipe({
       name: input.name,
       description: input.description,
@@ -25,7 +26,7 @@ exports.Mutation = {
 
     Object.assign(recipe, input);
 
-    await recipe.save()
+    await recipe.save();
 
     return recipe;
   },
