@@ -11,6 +11,4 @@ exports.Query = {
     console.log(recipe);
     return recipe;
   },
-
-  
 };

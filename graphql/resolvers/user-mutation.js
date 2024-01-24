@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
 
 const mutation = {
-  async signup(parent, { username, email }, context) {
+  async signup(parent, { username, password }, context) {
     const userExist = await User.find({ username });
     if (userExist) throw new Error("User already exists");
 
@@ -29,6 +29,11 @@ const mutation = {
       token,
       user,
     };
+  },
+
+  async signin(parent, { username, password }, context) {
+    const userExist = await User.find({ username });
+    if (userExist) throw new Error("User already exists");
   },
 };
 
