@@ -33,7 +33,7 @@ const mutation = {
 
   async signin(parent, { username, password }, context) {
     const userExist = await User.find({ username });
-    if (userExist) throw new Error("User already exists");
+    if (!userExist) throw new Error("No user found!");
   },
 };
 
